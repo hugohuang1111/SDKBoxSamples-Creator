@@ -1,0 +1,15 @@
+{
+    "name": "SDKBox-installer",
+    "version": "0.0.1",
+    "description": "SDKBox installer",
+    "author": "SDKBox",
+    "main": "main.js",
+    "main-menu": {
+        "SDKBox/import": {
+            "message": "SDKBox-installer:import"
+        },
+        "SDKBox/update": {
+            "message": "SDKBox-installer:update"
+        }
+    }
+}

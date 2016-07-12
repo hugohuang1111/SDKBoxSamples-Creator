@@ -1,0 +1,98 @@
+{
+    "android": {
+        "Facebook": {
+            "debug": false
+        },
+        "iap": {
+            "items": {
+                "coin_package": {
+                    "id": "com.cocos2dx.plugintest2"
+                },
+                "special_coins_1": {
+                    "id": "com.generamobile.ramboat.iapspecialcoins1"
+                },
+                "third_slot": {
+                    "type": "non_consumable",
+                    "id": "com.generamobile.ramboat.thirdslot"
+                },
+                "coin_package2": {
+                    "id": "com.cocos2dx.plugintest3"
+                },
+                "coins_2": {
+                    "id": "com.generamobile.ramboat.iapcoins2"
+                },
+                "coins_3": {
+                    "id": "com.generamobile.ramboat.iapcoins3"
+                },
+                "coins_4": {
+                    "id": "com.generamobile.ramboat.iapcoins4"
+                },
+                "coins_5": {
+                    "id": "com.generamobile.ramboat.iapcoins5"
+                },
+                "double_coin": {
+                    "type": "non_consumable",
+                    "id": "com.cocos2dx.non2"
+                },
+                "special_coins_5": {
+                    "id": "com.generamobile.ramboat.iapspecialcoins5"
+                },
+                "remove_ads": {
+                    "type": "non_consumable",
+                    "id": "com.cocos2dx.non1"
+                },
+                "special_coins_2": {
+                    "id": "com.generamobile.ramboat.iapspecialcoins2"
+                },
+                "special_coins_4": {
+                    "id": "com.generamobile.ramboat.iapspecialcoins4"
+                },
+                "pack_4": {
+                    "id": "com.generamobile.ramboat.pack4"
+                },
+                "pack_5": {
+                    "id": "com.generamobile.ramboat.pack5"
+                },
+                "pack_6": {
+                    "id": "com.generamobile.ramboat.pack6"
+                },
+                "special_coins_3": {
+                    "id": "com.generamobile.ramboat.iapspecialcoins3"
+                },
+                "pack_1": {
+                    "id": "com.generamobile.ramboat.pack1"
+                },
+                "pack_2": {
+                    "id": "com.generamobile.ramboat.pack2"
+                },
+                "pack_3": {
+                    "id": "com.generamobile.ramboat.pack3"
+                }
+            },
+            "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq7eIGu7dRcBRBSC05cYvxjBMd7cqq9w6++1er+cqO2tyWPtWB4vuTkliq4k/Fkylx5UMfptdOYOW8ENgQyVucs/NyuOAGmve4j5JFhLPcLa6LjO2HUSY6zk04DRR9Zw7YPET4WAezZTz8jYMGhPG08HYltVj8cmSpSFWd1nI0pGOJoLQIMkIkXplgnPQRbMpuOu70vnQQBS1RFcoFT7OjaV8U0cfJzMoS1TMkGqaJKks2T+qOBNTtkXzge92EnvYIkhpCfN98dj6aQmETNp5yj5Fa+jcbAVF8dy5xymJwioL89XQKfKkGR+P6ESMoBEPfIZYIlMU8EUwmC+UKGLujQIDAQAB"
+        }
+    },
+    "ios": {
+        "Facebook": {
+            "debug": true
+        },
+        "iap": {
+            "items": {
+                "remove_ads": {
+                    "type": "non_consumable",
+                    "id": "com.cocos2dx.non1"
+                },
+                "coin_package": {
+                    "id": "com.cocos2dx.plugintest2"
+                },
+                "double_coin": {
+                    "type": "non_consumable",
+                    "id": "com.cocos2dx.non2"
+                },
+                "coin_package2": {
+                    "id": "com.cocos2dx.plugintest3"
+                }
+            }
+        }
+    }
+}
