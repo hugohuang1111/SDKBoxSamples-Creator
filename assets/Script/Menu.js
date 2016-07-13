@@ -16,6 +16,18 @@ cc.Class({
     // use this for initialization
     onLoad: function() {
 
+        //init google analytics
+        if ('undefined' != typeof(sdkbox)) {
+            if ('undefined' != typeof(sdkbox.PluginGoogleAnalytics)) {
+                sdkbox.PluginGoogleAnalytics.init();
+                sdkbox.PluginGoogleAnalytics.startSession();
+                sdkbox.PluginGoogleAnalytics.logScreen('menu');
+            }
+            if ('undefined' != typeof(sdkbox.PluginReview)) {
+                sdkbox.PluginReview.init();
+            }
+        }
+
     },
 
     // called every frame, uncomment this function to activate update callback
@@ -25,9 +37,23 @@ cc.Class({
 
     showIAPScene: function() {
         cc.director.loadScene('IAP');
+        if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+            sdkbox.PluginGoogleAnalytics.logScreen('iap');
+        }
     },
 
     showFacebookScene: function() {
         cc.director.loadScene('Facebook');
+        if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+            sdkbox.PluginGoogleAnalytics.logScreen('facebook');
+        }
+    },
+
+    showAdMobScene: function() {
+        cc.director.loadScene('AdMob');
+        if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+            sdkbox.PluginGoogleAnalytics.logScreen('AdMob');
+        }
     }
+
 });

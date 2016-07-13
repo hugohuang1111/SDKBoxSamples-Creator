@@ -78,6 +78,10 @@ cc.Class({
             },
             onSharedSuccess: function(data) {
                 self.showInfo("share successful");
+
+                if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+                    sdkbox.PluginGoogleAnalytics.logEvent('facebook', 'share', 'share success', 0);
+                }
             },
             onSharedFailed: function(data) {
                 self.showInfo("share failed");
@@ -149,6 +153,10 @@ cc.Class({
         info.text = "Best Game Engine";
         info.image = "http://cocos2d-x.org/images/logo.png";
         sdkbox.PluginFacebook.share(info);
+
+        if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+            sdkbox.PluginGoogleAnalytics.logEvent('facebook', 'share', 'share link begin', 0);
+        }
     },
 
     dialogLink: function() {
@@ -163,6 +171,10 @@ cc.Class({
         info.text = "Best Game Engine";
         info.image = "http://cocos2d-x.org/images/logo.png";
         sdkbox.PluginFacebook.dialog(info);
+
+        if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+            sdkbox.PluginGoogleAnalytics.logEvent('facebook', 'share', 'dialog share begin', 0);
+        }
     },
 
     invite: function() {

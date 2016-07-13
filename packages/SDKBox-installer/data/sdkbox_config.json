@@ -1,15 +1,39 @@
 {
     "android": {
+        "GoogleAnalytics": {
+            "trackingCode": "UA-78692827-1"
+        },
+        "AdMob": {
+            "test": true,
+            "ads": {
+                "gameover": {
+                    "type": "interstitial",
+                    "id": "ca-app-pub-1329374026572143/1092476511"
+                },
+                "home": {
+                    "width": 300,
+                    "type": "banner",
+                    "id": "ca-app-pub-1329374026572143/2685130917",
+                    "alignment": "bottom",
+                    "height": 50
+                }
+            }
+        },
+        "Review": {
+            "LaunchLimit": 3,
+            "DayForReminding": 1,
+            "tryPromptWhenInit": true,
+            "DayLimit": 0,
+            "LaunchForReminding": 2,
+            "UserEventLimit": 0
+        },
         "Facebook": {
             "debug": false
         },
         "iap": {
             "items": {
-                "coin_package": {
-                    "id": "com.cocos2dx.plugintest2"
-                },
-                "special_coins_1": {
-                    "id": "com.generamobile.ramboat.iapspecialcoins1"
+                "pack_2": {
+                    "id": "com.generamobile.ramboat.pack2"
                 },
                 "third_slot": {
                     "type": "non_consumable",
@@ -34,12 +58,15 @@
                     "type": "non_consumable",
                     "id": "com.cocos2dx.non2"
                 },
-                "special_coins_5": {
-                    "id": "com.generamobile.ramboat.iapspecialcoins5"
+                "pack_1": {
+                    "id": "com.generamobile.ramboat.pack1"
                 },
                 "remove_ads": {
                     "type": "non_consumable",
                     "id": "com.cocos2dx.non1"
+                },
+                "pack_5": {
+                    "id": "com.generamobile.ramboat.pack5"
                 },
                 "special_coins_2": {
                     "id": "com.generamobile.ramboat.iapspecialcoins2"
@@ -50,29 +77,58 @@
                 "pack_4": {
                     "id": "com.generamobile.ramboat.pack4"
                 },
-                "pack_5": {
-                    "id": "com.generamobile.ramboat.pack5"
+                "special_coins_5": {
+                    "id": "com.generamobile.ramboat.iapspecialcoins5"
                 },
                 "pack_6": {
                     "id": "com.generamobile.ramboat.pack6"
                 },
-                "special_coins_3": {
-                    "id": "com.generamobile.ramboat.iapspecialcoins3"
-                },
-                "pack_1": {
-                    "id": "com.generamobile.ramboat.pack1"
-                },
-                "pack_2": {
-                    "id": "com.generamobile.ramboat.pack2"
-                },
                 "pack_3": {
                     "id": "com.generamobile.ramboat.pack3"
+                },
+                "special_coins_1": {
+                    "id": "com.generamobile.ramboat.iapspecialcoins1"
+                },
+                "coin_package": {
+                    "id": "com.cocos2dx.plugintest2"
+                },
+                "special_coins_3": {
+                    "id": "com.generamobile.ramboat.iapspecialcoins3"
                 }
             },
             "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq7eIGu7dRcBRBSC05cYvxjBMd7cqq9w6++1er+cqO2tyWPtWB4vuTkliq4k/Fkylx5UMfptdOYOW8ENgQyVucs/NyuOAGmve4j5JFhLPcLa6LjO2HUSY6zk04DRR9Zw7YPET4WAezZTz8jYMGhPG08HYltVj8cmSpSFWd1nI0pGOJoLQIMkIkXplgnPQRbMpuOu70vnQQBS1RFcoFT7OjaV8U0cfJzMoS1TMkGqaJKks2T+qOBNTtkXzge92EnvYIkhpCfN98dj6aQmETNp5yj5Fa+jcbAVF8dy5xymJwioL89XQKfKkGR+P6ESMoBEPfIZYIlMU8EUwmC+UKGLujQIDAQAB"
         }
     },
     "ios": {
+        "GoogleAnalytics": {
+            "track_init_screen": false,
+            "trackingCode": "UA-78692827-1"
+        },
+        "AdMob": {
+            "test": true,
+            "ads": {
+                "gameover": {
+                    "type": "interstitial",
+                    "id": "ca-app-pub-1329374026572143/4185543717"
+                },
+                "home": {
+                    "width": 300,
+                    "type": "banner",
+                    "id": "ca-app-pub-1329374026572143/3847466511",
+                    "alignment": "bottom",
+                    "height": 50
+                }
+            }
+        },
+        "Review": {
+            "LaunchLimit": 3,
+            "DayForReminding": 1,
+            "tryPromptWhenInit": true,
+            "AppID": "587767923",
+            "DayLimit": 0,
+            "LaunchForReminding": 2,
+            "UserEventLimit": 0
+        },
         "Facebook": {
             "debug": true
         },
@@ -82,12 +138,12 @@
                     "type": "non_consumable",
                     "id": "com.cocos2dx.non1"
                 },
-                "coin_package": {
-                    "id": "com.cocos2dx.plugintest2"
-                },
                 "double_coin": {
                     "type": "non_consumable",
                     "id": "com.cocos2dx.non2"
+                },
+                "coin_package": {
+                    "id": "com.cocos2dx.plugintest2"
                 },
                 "coin_package2": {
                     "id": "com.cocos2dx.plugintest3"

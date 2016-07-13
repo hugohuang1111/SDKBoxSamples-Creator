@@ -39,15 +39,24 @@ cc.Class({
             onSuccess: function(product) {
                 //Purchase success
                 console.log("Purchase successful: " + product.name)
+                if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+                    sdkbox.PluginGoogleAnalytics.logEvent('iap', 'purchase', 'purchase success:' + product.price, 0);
+                }
             },
             onFailure: function(product, msg) {
                 //Purchase failed
                 //msg is the error message
                 console.log("Purchase failed: " + product.name + " error: " + msg);
+                if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+                    sdkbox.PluginGoogleAnalytics.logEvent('iap', 'purchase', 'purchase failed', 0);
+                }
             },
             onCanceled: function(product) {
                 //Purchase was canceled by user
                 console.log("Purchase canceled: " + product.name);
+                if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+                    sdkbox.PluginGoogleAnalytics.logEvent('iap', 'purchase', 'purchase canceled', 0);
+                }
             },
             onRestored: function(product) {
                 //Purchase restored
@@ -76,6 +85,10 @@ cc.Class({
         }
 
         sdkbox.IAP.purchase();
+
+        if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+            sdkbox.PluginGoogleAnalytics.logEvent('iap', 'purchase', 'purchase start', 0);
+        }
     },
 
     iap_restore: function() {

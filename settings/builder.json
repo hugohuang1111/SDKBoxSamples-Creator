@@ -1,0 +1,13 @@
+{
+  "excludeScenes": [],
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "com.sdkbox.test.SDKBoxSamplesForCreator",
+  "startScene": "2d2f792f-a40c-49bb-a189-ed176a246e49",
+  "title": "SDKBoxSamples-Creator",
+  "webOrientation": "auto"
+}
