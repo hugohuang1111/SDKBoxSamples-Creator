@@ -3,6 +3,14 @@
         "GoogleAnalytics": {
             "trackingCode": "UA-78692827-1"
         },
+        "Review": {
+            "LaunchLimit": 3,
+            "DayForReminding": 1,
+            "tryPromptWhenInit": true,
+            "DayLimit": 0,
+            "LaunchForReminding": 2,
+            "UserEventLimit": 0
+        },
         "AdMob": {
             "test": true,
             "ads": {
@@ -19,21 +27,28 @@
                 }
             }
         },
-        "Review": {
-            "LaunchLimit": 3,
-            "DayForReminding": 1,
-            "tryPromptWhenInit": true,
-            "DayLimit": 0,
-            "LaunchForReminding": 2,
-            "UserEventLimit": 0
-        },
         "Facebook": {
             "debug": false
         },
+        "Chartboost": {
+            "ads": {
+                "Default": {
+                    "type": "interstitial"
+                },
+                "Level Complete": {
+                    "type": "rewarded_video"
+                },
+                "MoreApp": {
+                    "type": "more_app"
+                }
+            },
+            "id": "4f7b433509b6025804000002",
+            "signature": "dd2d41b69ac01b80f443f5b6cf06096d457f82bd"
+        },
         "iap": {
             "items": {
-                "pack_2": {
-                    "id": "com.generamobile.ramboat.pack2"
+                "coin_package": {
+                    "id": "com.cocos2dx.plugintest2"
                 },
                 "third_slot": {
                     "type": "non_consumable",
@@ -58,27 +73,27 @@
                     "type": "non_consumable",
                     "id": "com.cocos2dx.non2"
                 },
-                "pack_1": {
-                    "id": "com.generamobile.ramboat.pack1"
+                "special_coins_1": {
+                    "id": "com.generamobile.ramboat.iapspecialcoins1"
                 },
                 "remove_ads": {
                     "type": "non_consumable",
                     "id": "com.cocos2dx.non1"
                 },
-                "pack_5": {
-                    "id": "com.generamobile.ramboat.pack5"
+                "special_coins_3": {
+                    "id": "com.generamobile.ramboat.iapspecialcoins3"
                 },
                 "special_coins_2": {
                     "id": "com.generamobile.ramboat.iapspecialcoins2"
                 },
+                "special_coins_5": {
+                    "id": "com.generamobile.ramboat.iapspecialcoins5"
+                },
                 "special_coins_4": {
                     "id": "com.generamobile.ramboat.iapspecialcoins4"
                 },
-                "pack_4": {
-                    "id": "com.generamobile.ramboat.pack4"
-                },
-                "special_coins_5": {
-                    "id": "com.generamobile.ramboat.iapspecialcoins5"
+                "pack_5": {
+                    "id": "com.generamobile.ramboat.pack5"
                 },
                 "pack_6": {
                     "id": "com.generamobile.ramboat.pack6"
@@ -86,14 +101,14 @@
                 "pack_3": {
                     "id": "com.generamobile.ramboat.pack3"
                 },
-                "special_coins_1": {
-                    "id": "com.generamobile.ramboat.iapspecialcoins1"
+                "pack_1": {
+                    "id": "com.generamobile.ramboat.pack1"
                 },
-                "coin_package": {
-                    "id": "com.cocos2dx.plugintest2"
+                "pack_2": {
+                    "id": "com.generamobile.ramboat.pack2"
                 },
-                "special_coins_3": {
-                    "id": "com.generamobile.ramboat.iapspecialcoins3"
+                "pack_4": {
+                    "id": "com.generamobile.ramboat.pack4"
                 }
             },
             "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq7eIGu7dRcBRBSC05cYvxjBMd7cqq9w6++1er+cqO2tyWPtWB4vuTkliq4k/Fkylx5UMfptdOYOW8ENgQyVucs/NyuOAGmve4j5JFhLPcLa6LjO2HUSY6zk04DRR9Zw7YPET4WAezZTz8jYMGhPG08HYltVj8cmSpSFWd1nI0pGOJoLQIMkIkXplgnPQRbMpuOu70vnQQBS1RFcoFT7OjaV8U0cfJzMoS1TMkGqaJKks2T+qOBNTtkXzge92EnvYIkhpCfN98dj6aQmETNp5yj5Fa+jcbAVF8dy5xymJwioL89XQKfKkGR+P6ESMoBEPfIZYIlMU8EUwmC+UKGLujQIDAQAB"
@@ -103,6 +118,15 @@
         "GoogleAnalytics": {
             "track_init_screen": false,
             "trackingCode": "UA-78692827-1"
+        },
+        "Review": {
+            "LaunchLimit": 3,
+            "DayForReminding": 1,
+            "tryPromptWhenInit": true,
+            "AppID": "587767923",
+            "DayLimit": 0,
+            "LaunchForReminding": 2,
+            "UserEventLimit": 0
         },
         "AdMob": {
             "test": true,
@@ -120,17 +144,23 @@
                 }
             }
         },
-        "Review": {
-            "LaunchLimit": 3,
-            "DayForReminding": 1,
-            "tryPromptWhenInit": true,
-            "AppID": "587767923",
-            "DayLimit": 0,
-            "LaunchForReminding": 2,
-            "UserEventLimit": 0
-        },
         "Facebook": {
             "debug": true
+        },
+        "Chartboost": {
+            "ads": {
+                "Default": {
+                    "type": "interstitial"
+                },
+                "Level Complete": {
+                    "type": "rewarded_video"
+                },
+                "MoreApp": {
+                    "type": "more_app"
+                }
+            },
+            "id": "4f21c409cd1cb2fb7000001b",
+            "signature": "92e2de2fd7070327bdeb54c15a5295309c6fcd2d"
         },
         "iap": {
             "items": {
@@ -138,12 +168,12 @@
                     "type": "non_consumable",
                     "id": "com.cocos2dx.non1"
                 },
+                "coin_package": {
+                    "id": "com.cocos2dx.plugintest2"
+                },
                 "double_coin": {
                     "type": "non_consumable",
                     "id": "com.cocos2dx.non2"
-                },
-                "coin_package": {
-                    "id": "com.cocos2dx.plugintest2"
                 },
                 "coin_package2": {
                     "id": "com.cocos2dx.plugintest3"

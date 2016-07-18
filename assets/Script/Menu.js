@@ -54,6 +54,13 @@ cc.Class({
         if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
             sdkbox.PluginGoogleAnalytics.logScreen('AdMob');
         }
-    }
+    },
+
+    showChartboostScene: function() {
+        cc.director.loadScene('Chartboost');
+        if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+            sdkbox.PluginGoogleAnalytics.logScreen('Chartboost');
+        }
+    },
 
 });
