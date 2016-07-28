@@ -1,0 +1,17 @@
+body {
+    background: #C0C0C0
+}
+
+.grid_container {
+    display: flex;
+}
+
+.grid_column {
+    flex: 1;
+}
+
+.image_center {
+    clear: both;
+    display: block;
+    margin:auto;
+}
