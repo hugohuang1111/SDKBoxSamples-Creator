@@ -58,9 +58,6 @@ let main = function() {
                 SDKBox.utils.showProjects(files, 4);
             }
         });
-
-    let a = ['a', 'b'];
-    console.log(`array ${a}`);
 }
 
 let importClick = function() {
