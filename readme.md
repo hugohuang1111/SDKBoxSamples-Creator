@@ -12,7 +12,7 @@ Steps:
 4. compile this project
 5. run
 
-Now, this project just implement code how to invoke `IAP`, `Facebook`, `GoogleAnalytics`, `Review`, `AdMob` plugins, other plugins of SDKBox is the sample.
+Now, this project just implement code how to invoke `IAP`, `Facebook`, `GoogleAnalytics`, `Review`, `AdMob`, `InMobi` plugins, other plugins of SDKBox is the sample.
 and we will add more sample code of other plugins ASAP.
 
 ## 中文
@@ -27,4 +27,4 @@ and we will add more sample code of other plugins ASAP.
 4. 编译工程
 5. 运行
 
-现在此工程中只写了 `IAP`, `Facebook`, `GoogleAnalytics`, `Review`, `AdMob` 插件的调用实现代码,其它插件雷同,后续也会不断补充进新的插件调用方法
+现在此工程中只写了 `IAP`, `Facebook`, `GoogleAnalytics`, `Review`, `AdMob`, `InMobi` 插件的调用实现代码,其它插件雷同,后续也会不断补充进新的插件调用方法

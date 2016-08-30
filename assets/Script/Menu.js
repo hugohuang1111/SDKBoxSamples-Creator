@@ -62,5 +62,12 @@ cc.Class({
             sdkbox.PluginGoogleAnalytics.logScreen('Chartboost');
         }
     },
+    
+    showInMobiScene: function() {
+        cc.director.loadScene('InMobi');
+        if ('undefined' != typeof(sdkbox) && 'undefined' == typeof(sdkbox.PluginGoogleAnalytics)) {
+            sdkbox.PluginGoogleAnalytics.logScreen('InMobi');
+        }
+    },
 
 });
