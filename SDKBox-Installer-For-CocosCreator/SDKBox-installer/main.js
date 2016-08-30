@@ -32,7 +32,6 @@ module.exports = {
             win.SDKBoxData = {
                 "projectPath": "a/b/c.jpg"
             }
-            Editor.log(win);
             win.loadURL(Path.join('file://', __dirname,
                 './windows/import.html' + '?project=' + encodeURIComponent(Editor.projectInfo.path)));
         },
@@ -48,7 +47,6 @@ module.exports = {
             win.SDKBoxData = {
                 "projectPath": "a/b/c.jpg"
             }
-            Editor.log(win);
             win.loadURL(Path.join('file://', __dirname,
                 './windows/update.html' + '?project=' + encodeURIComponent(Editor.projectInfo.path)));
         },
