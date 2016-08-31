@@ -7,44 +7,84 @@ const SDKBox = {};
 SDKBox.utils = require('./js/utils.js').utils;
 SDKBox.querys = SDKBox.utils.queryParams();
 
-let main = function() {
+// log console 
+var console = document.getElementById("console");
+
+let getOutput = function (data)
+{
+    var str = data.toString(); 
+    var lines = str.split(/(\r?\n)/g);
+
+    for (var i=0; i < lines.length; i++) 
+    {
+        // Process the line, noting it might be incomplete.
+        console.innerHTML += lines[i] + "<p>";
+        console.scrollIntoView(false);
+    }
+}
+
+let main = function() 
+{
     fs.readdir(path.normalize(path.join(SDKBox.querys.project, 'build')),
-        (err, files) => {
-            if (err) {
+        (err, files) => 
+        {
+            if (err) 
+            {
+                console.innerHTML += 'SDKBox: read build folder failed';
+                console.scrollIntoView(false);
                 console.log(err);
                 console.log('SDKBox: read build folder failed');
-            } else {
+            } 
+            else 
+            {
                 SDKBox.utils.showProjects(files, 4);
             }
         });
 }
 
-let updateClick = function() {
+let updateClick = function() 
+{
     const projectFolder = SDKBox.utils.getProjectName('projects_radio_box');
-    if (null == projectFolder) {
-        alert('You must select a project');
+    if (null == projectFolder) 
+    {
+        console.innerHTML += 'You must select a project';
+        console.scrollIntoView(false);
+        //alert('You must select a project');
         return;
     }
     const projectDir = path.normalize(path.join(SDKBox.querys.project, 'build', projectFolder));
 
-    const sdkbox_update = spawn('sdkbox', [
+    const sdkbox_update = spawn('cmd.exe', 
+    [
+        '/c', 'sdkbox',
         'update',
         '-p', projectDir,
         '--alwaysupdate',
         '--nohelp'
-    ])
-    sdkbox_update.stderr.on('data', (data) => {
+    ]);
+
+    sdkbox_update.stderr.on('data', (data) => 
+    {
+        getOutput(data);
+        //alert('ERROR:' + data);
         console.log('ERROR:' + data);
     });
-    // sdkbox_update.stdout.on('data', (data) => {
-    //     console.log('INFO:' + data);
-    // });
-    sdkbox_update.on('close', (code) => {
-        if (0 != code) {
-            alert(`sdkbox update process exited with code ${code}
-                run "sdkbox update -p ${projectDir} -vv" in console manual`);
-        } else {
-            alert(`SDKBox: plugins in ${projectFolder} has been updated`);
+    sdkbox_update.stdout.on('data', (data) => 
+    {
+        getOutput(data);
+        //alert('INFO:' + data);
+        console.log('INFO:' + data);
+    });
+    sdkbox_update.on('close', (code) => 
+    {
+        if (0 != code) 
+        {
+            console.innerHTML += `sdkbox update process exited with code ${code} run "sdkbox update -p ${projectDir} -vv" in console manual`;
+        } 
+        else 
+        {
+            console.innerHTML += `SDKBox: plugins in ${projectFolder} has been updated`;
         }
+        console.scrollIntoView(false);
     });
 }

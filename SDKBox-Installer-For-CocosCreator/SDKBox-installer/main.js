@@ -23,8 +23,8 @@ module.exports = {
         'import' () {
             let win = new electron.BrowserWindow({
                 width: 640,
-                height: 380,
-                resizable: false
+                height: 420,
+                resizable: false                // false to keep it one size
             });
             win.on('closed', () => {
                 win = null
@@ -38,8 +38,8 @@ module.exports = {
         'update' () {
             let win = new electron.BrowserWindow({
                 width: 640,
-                height: 380,
-                resizable: false
+                height: 420,
+                resizable: false                // false to keep it one size
             });
             win.on('closed', () => {
                 win = null
