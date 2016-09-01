@@ -7,9 +7,10 @@ const SDKBox = {};
 SDKBox.utils = require('./js/utils.js').utils;
 SDKBox.querys = SDKBox.utils.queryParams();
 
-let SDKBoxConfig = {}
+let SDKBoxConfig = {};
 SDKBoxConfig.column_max = 4;
-SDKBoxConfig.plugins = [
+SDKBoxConfig.plugins = 
+[
     "achievement",
     "adcolony",
     "admob",
@@ -45,28 +46,41 @@ SDKBoxConfig.plugins = [
     "youtube",
 ];
 
+// log console 
+var console = document.getElementById("console");
 
-let main = function() {
+let main = function () 
+{
     SDKBox.utils.showPlugins(SDKBoxConfig.plugins, 4);
 
     fs.readdir(path.normalize(path.join(SDKBox.querys.project, 'build')),
-        (err, files) => {
-            if (err) {
+        (err, files) => 
+        {
+            if (err) 
+            {
                 console.log(err);
                 console.log('SDKBox: read build folder failed');
-            } else {
+                console.innerHTML += 'SDKBox: read build folder failed';
+                console.scrollIntoView(false);
+            } 
+            else 
+            {
                 SDKBox.utils.showProjects(files, 4);
             }
         });
 }
 
-let importClick = function() {
+let importClick = function () 
+{
 
-    let getPluginsName = function() {
+    let getPluginsName = function () 
+    {
         let selected_plugins = [];
-        SDKBoxConfig.plugins.map((name) => {
+        SDKBoxConfig.plugins.map((name) => 
+        {
             let cb = document.getElementsByName(name);
-            if (cb[0].checked) {
+            if (cb[0].checked) 
+            {
                 selected_plugins.push(name);
             }
         })
@@ -76,12 +90,20 @@ let importClick = function() {
 
     let projectFolder = SDKBox.utils.getProjectName('projects_radio_box');
     let import_plugins = getPluginsName();
-    if (null == projectFolder) {
-        alert('Must select a project.\nif no project show, you build project first');
+    //alert(import_plugins);
+
+    if (null == projectFolder) 
+    {
+        //alert('Must select a project.<br />if no project show, you build project first');
+        console.innerHTML += 'Must select a project. If no project shows, you must build project first<br />';
+        console.scrollIntoView(false);
         return;
     }
-    if (import_plugins.length < 1) {
-        alert('At least select on plugin to import');
+    if (import_plugins.length < 1) 
+    {
+        //alert('At least select one plugin to import');
+        console.innerHTML += 'At least select one plugin to import<br />';
+        console.scrollIntoView(false);
         return;
     }
 
@@ -89,48 +111,90 @@ let importClick = function() {
 
     let import_success_plugins = [];
     let import_fail_plugins = [];
-    let showResult = function() {
-        let resultText = `SDKBox: success import plugins ${import_success_plugins}`;
-        if (import_fail_plugins.length > 0) {
-            resultText += `\nfailed import plugins: ${import_fail_plugins}`;
+
+    //alert(projectDir);
+
+    let showResult = function () 
+    {
+        let resultText = `SDKBox: <br />success import plugins: ${import_success_plugins}`;
+        if (import_fail_plugins.length > 0) 
+        {
+            resultText += `<br />failed import plugins: ${import_fail_plugins}`;
         }
-        alert(resultText);
+        //alert(resultText);
+        console.innerHTML += resultText + "<br />";
+        console.scrollIntoView(false);
     }
-    let runImport = function(import_plugins) {
-        if (import_plugins.length < 1) {
+    let runImport = function (import_plugins) 
+    {
+        if (import_plugins.length < 1) 
+        {
             showResult();
             return 0;
         }
         let plugin_name = import_plugins.shift();
-        if (!plugin_name) {
+        if (!plugin_name) 
+        {
             return;
         }
-        const sdkbox_import = spawn('sdkbox', [
+        
+        //alert(plugin_name);
+
+        const sdkbox_import = spawn('cmd.exe', 
+        [
+			'/c', 'sdkbox',
             'import', plugin_name,
             '-p', projectDir,
             '--alwaysupdate',
             '--nohelp'
-        ])
-        sdkbox_import.stderr.on('data', (data) => {
+        ]);
+        sdkbox_import.stderr.on('data', (data) => 
+        {
+            getOutput(data);
+            
+            //alert('ERROR:' + data);
             console.log('ERROR:' + data);
         });
-        sdkbox_import.stdout.on('data', (data) => {
+        sdkbox_import.stdout.on('data', (data) => 
+        {
+            getOutput(data);
+
+            //alert('INFO:' + data);
             console.log('INFO:' + data);
         });
-        sdkbox_import.on('close', (code) => {
-            if (0 != code) {
-                alert(`sdkbox import ${plugin_name} process exited with code ${code}`);
-                alert(`sdkbox import process exited with code ${code}
-                run "sdkbox import ${plugin_name} -p ${projectDir} -vv" in console manual`);
+        sdkbox_import.on('close', (code) => 
+        {
+            if (0 != code) 
+            {
+                //alert(`sdkbox import ${plugin_name} process exited with code ${code}`);
+                //alert(`sdkbox import process exited with code ${code} run "sdkbox import ${plugin_name} -p ${projectDir} -vv" in console manual`);
+                
+                console.innerHTML += `sdkbox import ${plugin_name} process exited with code ${code}<br />`;
+                console.innerHTML += `sdkbox import process exited with code ${code} run "sdkbox import ${plugin_name} -p ${projectDir} -vv" in console manual<br />`;
+                console.scrollIntoView(false);
                 import_fail_plugins.push(plugin_name);
                 showResult();
-            } else {
+            } 
+            else 
+            {
                 import_success_plugins.push(plugin_name);
                 runImport(import_plugins);
             }
         });
     }
 
-    runImport(import_plugins);
+    let getOutput = function (data)
+    {
+        var str = data.toString(); 
+        var lines = str.split(/(\r?\n)/g);
+        
+        for (var i=0; i < lines.length; i++) 
+        {
+            // Process the line, noting it might be incomplete.
+            console.innerHTML += lines[i] + "<p>";
+            console.scrollIntoView(false);
+        }
+    }
 
+    runImport(import_plugins);
 }

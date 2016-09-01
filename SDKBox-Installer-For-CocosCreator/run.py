@@ -4,6 +4,7 @@
 import os
 import distutils.dir_util
 import subprocess
+import sys
 
 def create_dir_if(path):
     if os.path.exists(path):
@@ -32,30 +33,31 @@ def run(cmd, quiet=False):
 def main():
     cur_dir = os.path.dirname(os.path.realpath(__file__))
 
-    # 1. check creator exist if
+    # 1. check if cocos creator exists
     CREATOR_HOME = os.path.join(os.path.expanduser('~'), '.CocosCreator')
     if (not os.path.isdir(CREATOR_HOME)):
-        print("Can't find Creator, please install CocosCreator.");
-        return;
+        print("Can't find Creator, please install CocosCreator.")
+        return
 
-    # 2. check instaler installed if
-    creator_package_folder = os.path.join(CREATOR_HOME, 'packages');
+    # 2. check if the installer is installed
+    creator_package_folder = os.path.join(CREATOR_HOME, 'packages')
     sdkbox_installer_folder = 'SDKBox-installer'
     dest_folder = os.path.join(creator_package_folder, sdkbox_installer_folder)
     if (os.path.isdir(dest_folder)):
-        print('Abort. SDKBox installer for CocosCreator has been installed')
-        return;
+        #print('Abort. SDKBox installer for CocosCreator has been installed')
+        print('Updating...')
+        #return;
 
     # 3. copy installer
     create_dir_if(dest_folder)
     copy_folder(os.path.join(cur_dir, sdkbox_installer_folder), dest_folder)
 
-    # 4. check installer console exist if and install it
+    # 4. check if installer console exists and if not, install it
     SDKBOX_HOME = os.path.join(os.path.expanduser('~'), '.sdkbox')
     if (not os.path.isdir(SDKBOX_HOME)):
         run('python -c \"import urllib; s = urllib.urlopen(\'https://raw.githubusercontent.com/sdkbox-doc/en/master/install/install.py\').read(); exec s\"')
 
-    print('SUCCESS! SDKBox installer for CocosCreator has been installed');
+    print('SUCCESS! SDKBox installer for CocosCreator has been installed')
 
 if __name__ == '__main__':
     main()
