@@ -24,7 +24,7 @@ module.exports = {
             let win = new electron.BrowserWindow({
                 width: 640,
                 height: 420,
-                resizable: false                // false to keep it one size
+                resizable: true                // false to keep it one size
             });
             win.on('closed', () => {
                 win = null
@@ -39,7 +39,7 @@ module.exports = {
             let win = new electron.BrowserWindow({
                 width: 640,
                 height: 420,
-                resizable: false                // false to keep it one size
+                resizable: true                // false to keep it one size
             });
             win.on('closed', () => {
                 win = null

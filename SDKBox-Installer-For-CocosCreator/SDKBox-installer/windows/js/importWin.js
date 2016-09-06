@@ -187,6 +187,8 @@ let importClick = function ()
     {
         var str = data.toString(); 
         var lines = str.split(/(\r?\n)/g);
+
+        getURL(str);
         
         for (var i=0; i < lines.length; i++) 
         {
@@ -197,4 +199,17 @@ let importClick = function ()
     }
 
     runImport(import_plugins);
+
+    let getURL = function (data)
+    {
+        var match = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.exec(data);
+
+        if (match !== null)
+        {
+            // open documentation url 
+            //document.location = match[0];                     // redirect
+            //window.open(match[0], "_blank", "resizable=yes"); // open native browser
+            spawn('explorer', [match[0]]);                      // open default external 
+        }
+    }
 }
