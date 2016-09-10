@@ -137,17 +137,33 @@ let importClick = function ()
         {
             return;
         }
+        let isWindows = function ()
+        {
+            return navigator.platform.indexOf('Win') > -1;
+        }
         
         //alert(plugin_name);
-
-        const sdkbox_import = spawn('cmd.exe', 
-        [
-			'/c', 'sdkbox',
-            'import', plugin_name,
-            '-p', projectDir,
-            '--alwaysupdate',
-            '--nohelp'
-        ]);
+        if (isWindows())
+        {
+            var sdkbox_import = spawn('cmd.exe', 
+            [
+                '/c', 'sdkbox',
+                'import', plugin_name,
+                '-p', projectDir,
+                '--alwaysupdate',
+                '--nohelp'
+            ]);
+        }
+        else
+        {
+            var sdkbox_import = spawn('sdkbox', 
+            [
+                'import', plugin_name,
+                '-p', projectDir,
+                '--alwaysupdate',
+                '--nohelp'
+            ]);
+        }
         sdkbox_import.stderr.on('data', (data) => 
         {
             getOutput(data);
