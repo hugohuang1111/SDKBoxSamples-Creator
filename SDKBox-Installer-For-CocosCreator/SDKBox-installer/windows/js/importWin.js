@@ -125,6 +125,12 @@ let importClick = function ()
         console.innerHTML += resultText + "<br />";
         console.scrollIntoView(false);
     }
+
+    let isWindows = function ()
+    {
+        return navigator.platform.indexOf('Win') > -1;
+    }
+
     let runImport = function (import_plugins) 
     {
         if (import_plugins.length < 1) 
@@ -136,10 +142,6 @@ let importClick = function ()
         if (!plugin_name) 
         {
             return;
-        }
-        let isWindows = function ()
-        {
-            return navigator.platform.indexOf('Win') > -1;
         }
         
         //alert(plugin_name);
@@ -162,7 +164,11 @@ let importClick = function ()
                 '-p', projectDir,
                 '--alwaysupdate',
                 '--nohelp'
-            ]);
+            ], 
+            {
+                shell: true,
+                env: Object.assign({}, process.env, { PATH: process.env.PATH + ':~/.sdkbox/bin' })
+            });
         }
         sdkbox_import.stderr.on('data', (data) => 
         {
@@ -225,7 +231,15 @@ let importClick = function ()
             // open documentation url 
             //document.location = match[0];                     // redirect
             //window.open(match[0], "_blank", "resizable=yes"); // open native browser
-            spawn('explorer', [match[0]]);                      // open default external 
+            //spawn('open', [match[0]]);                      // open default external 
+            if (isWindows())
+            {
+                spawn('explorer', [match[0]]);    
+            }
+            else
+            {
+                spawn('open', [match[0]]);    
+            }
         }
     }
 }

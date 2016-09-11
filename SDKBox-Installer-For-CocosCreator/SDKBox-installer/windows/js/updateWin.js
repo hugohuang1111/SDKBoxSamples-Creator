@@ -42,6 +42,11 @@ let main = function()
         });
 }
 
+let isWindows = function ()
+{
+    return navigator.platform.indexOf('Win') > -1;
+}
+
 let updateClick = function() 
 {
     const projectFolder = SDKBox.utils.getProjectName('projects_radio_box');
@@ -54,14 +59,31 @@ let updateClick = function()
     }
     const projectDir = path.normalize(path.join(SDKBox.querys.project, 'build', projectFolder));
 
-    const sdkbox_update = spawn('cmd.exe', 
-    [
-        '/c', 'sdkbox',
-        'update',
-        '-p', projectDir,
-        '--alwaysupdate',
-        '--nohelp'
-    ]);
+    if (isWindows())
+    {
+        var sdkbox_update = spawn('cmd.exe', 
+        [
+            '/c', 'sdkbox',
+            'update',
+            '-p', projectDir,
+            '--alwaysupdate',
+            '--nohelp'
+        ]); 
+    }
+    else
+    {
+        var sdkbox_update = spawn('sdkbox', 
+        [
+            'update',
+            '-p', projectDir,
+            '--alwaysupdate',
+            '--nohelp'
+        ], 
+        {
+            shell: true,
+            env: Object.assign({}, process.env, { PATH: process.env.PATH + ':~/.sdkbox/bin' })
+        });
+    }
 
     sdkbox_update.stderr.on('data', (data) => 
     {
