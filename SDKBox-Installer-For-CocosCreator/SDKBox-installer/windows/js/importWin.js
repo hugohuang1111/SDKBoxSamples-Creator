@@ -125,6 +125,12 @@ let importClick = function ()
         console.innerHTML += resultText + "<br />";
         console.scrollIntoView(false);
     }
+
+    let isWindows = function ()
+    {
+        return navigator.platform.indexOf('Win') > -1;
+    }
+
     let runImport = function (import_plugins) 
     {
         if (import_plugins.length < 1) 
@@ -139,15 +145,31 @@ let importClick = function ()
         }
         
         //alert(plugin_name);
-
-        const sdkbox_import = spawn('cmd.exe', 
-        [
-			'/c', 'sdkbox',
-            'import', plugin_name,
-            '-p', projectDir,
-            '--alwaysupdate',
-            '--nohelp'
-        ]);
+        if (isWindows())
+        {
+            var sdkbox_import = spawn('cmd.exe', 
+            [
+                '/c', 'sdkbox',
+                'import', plugin_name,
+                '-p', projectDir,
+                '--alwaysupdate',
+                '--nohelp'
+            ]);
+        }
+        else
+        {
+            var sdkbox_import = spawn('sdkbox', 
+            [
+                'import', plugin_name,
+                '-p', projectDir,
+                '--alwaysupdate',
+                '--nohelp'
+            ], 
+            {
+                shell: true,
+                env: Object.assign({}, process.env, { PATH: process.env.PATH + ':~/.sdkbox/bin' })
+            });
+        }
         sdkbox_import.stderr.on('data', (data) => 
         {
             getOutput(data);
@@ -187,6 +209,8 @@ let importClick = function ()
     {
         var str = data.toString(); 
         var lines = str.split(/(\r?\n)/g);
+
+        getURL(str);
         
         for (var i=0; i < lines.length; i++) 
         {
@@ -197,4 +221,25 @@ let importClick = function ()
     }
 
     runImport(import_plugins);
+
+    let getURL = function (data)
+    {
+        var match = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.exec(data);
+
+        if (match !== null)
+        {
+            // open documentation url 
+            //document.location = match[0];                     // redirect
+            //window.open(match[0], "_blank", "resizable=yes"); // open native browser
+            //spawn('open', [match[0]]);                      // open default external 
+            if (isWindows())
+            {
+                spawn('explorer', [match[0]]);    
+            }
+            else
+            {
+                spawn('open', [match[0]]);    
+            }
+        }
+    }
 }
